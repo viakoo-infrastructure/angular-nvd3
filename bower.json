@@ -29,7 +29,7 @@
     "dependencies": {
         "angular": "^1.x",
         "d3": "~3.3.13",
-        "nvd3": "git@github.com:ywplee/nvd3.git"
+        "nvd3": "git@github.com:ywplee/nvd3.git#1.7.2"
     },
     "ignore": [
         "**/.*",
