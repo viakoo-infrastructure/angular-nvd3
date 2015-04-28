@@ -169,13 +169,13 @@
                                 if (scope.chart.resizeHandler) scope.chart.resizeHandler.clear();
 
                                 // remove chart from nv.graph list
-                                for (var i = 0; i < nv.graphs.length; i++)
-                                    if (nv.graphs[i].id === scope.chart.id) {
-                                        nv.graphs.splice(i, 1);
+                                for (var i = 0; i < nv.models.length; i++)
+                                    if (nv.models[i].id === scope.chart.id) {
+                                        nv.models.splice(i, 1);
                                     }
                             }
                             scope.chart = null;
-                            nv.tooltip.cleanup();
+                            nv.models.tooltip().hidden(true);
                         },
 
                         // Get full directive scope
