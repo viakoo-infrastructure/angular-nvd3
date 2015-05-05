@@ -1,5 +1,5 @@
 /**************************************************************************
-* AngularJS-nvD3, v1.0.0-beta; MIT License; 27/04/2015 17:19
+* AngularJS-nvD3, v1.0.0-viakoo; MIT License; 05/05/2015 15:42
 * http://krispo.github.io/angular-nvd3
 **************************************************************************/
 (function(){
@@ -110,10 +110,19 @@
                                     'interactiveLayer',
                                     'controls'
                                 ].indexOf(key) >= 0){
-                                    if (options.chart[key] === undefined || options.chart[key] === null) {
-                                        if (scope._config.extended) options.chart[key] = {};
+                                    // special case handler for stackedAreaChart model's stacked event
+                                    // stacked is an option on the other models
+                                    if (key === 'stacked' && options.chart.type !== 'stackedAreaChart') {
+                                        scope.chart[key](options.chart[key]);
+                                    } 
+                                    else {
+                                        if (options.chart[key] === undefined || options.chart[key] === null) {
+                                            if (scope._config.extended) {
+                                                options.chart[key] = {};
+                                            }
+                                        }
+                                        configure(scope.chart[key], options.chart[key], options.chart.type);
                                     }
-                                    configure(scope.chart[key], options.chart[key], options.chart.type);
                                 }
 
                                 //TODO: need to fix bug in nvd3
